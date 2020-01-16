@@ -78,46 +78,53 @@ class App extends Component {
               >
                 View Todos
               </div>
-              <div className="card-body">
-                <div className="list-group">
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-success"
-                  >
-                    <input
-                      type="checkbox"
-                      aria-label="Checkbox for following text input"
-                    />
-                    A simple success list group item
-                    <FontAwesomeIcon icon={faEdit} />
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </a>
 
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-danger"
-                  >
+              <div className="list-group">
+                <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-success">
+                  <p className="p-0 m-0 flex-grow-1">
                     <input
                       type="checkbox"
                       aria-label="Checkbox for following text input"
                     />
-                    A simple danger list group item
+                    First item
+                  </p>
+                  <button>
                     <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button>
                     <FontAwesomeIcon icon={faTrashAlt} />
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-warning"
-                  >
+                  </button>
+                </li>
+                <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger">
+                  <p className="p-0 m-0 flex-grow-1">
                     <input
                       type="checkbox"
                       aria-label="Checkbox for following text input"
                     />
-                    A simple warning list group item
+                    Second item
+                  </p>
+                  <button>
                     <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button>
                     <FontAwesomeIcon icon={faTrashAlt} />
-                  </a>
-                </div>
+                  </button>
+                </li>
+                <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-warning">
+                  <p className="p-0 m-0 flex-grow-1">
+                    <input
+                      type="checkbox"
+                      aria-label="Checkbox for following text input"
+                    />
+                    Third item
+                  </p>
+                  <button>
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button>
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </li>
               </div>
             </div>
           </div>
