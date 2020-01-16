@@ -11,6 +11,12 @@
     "test": "npm run build && mocha test/.setup.js test/*.spec.js --exit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@material-ui/core": "^4.8.3",
+    "@material/checkbox": "^4.0.0",
+    "@rmwc/button": "^5.7.2",
     "axios": "^0.16.1",
     "bluebird": "^3.5.0",
     "chai": "^3.5.0",
@@ -24,6 +30,7 @@
     "nightmare-react-utils": "^1.0.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "rmwc": "^5.7.2",
     "serve-favicon": "^2.5.0",
     "webpack": "^3.6.0"
   },
