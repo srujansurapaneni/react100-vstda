@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import InputCard from "./inputCard";
-import ViewTodo from "./viewTodo";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
       <div className="container">
@@ -11,10 +14,7 @@ class App extends Component {
           <hr />
         </header>
 
-        <div className="row">
-          <InputCard />
-          <ViewTodo />
-        </div>
+        <InputCard />
       </div>
     );
   }
