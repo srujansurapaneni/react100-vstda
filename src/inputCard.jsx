@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import ViewTodo from "./viewTodo";
 
+var todo_list = [[]];
+
 class InputCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dropDownVal: "Select a Priority",
-      inputVal: "enter todo",
-      id: "123"
+      inputVal: "",
+      id: "",
+      lists: [[]]
     };
     this.handleEvent = this.handleEvent.bind(this);
     this.addEvent = this.addEvent.bind(this);
+    this.viewList = this.viewList.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
     window.id = 0;
   }
 
@@ -19,8 +24,39 @@ class InputCard extends Component {
   }
 
   addEvent() {
-    const todo = { text: this.state.inputVal, id: this.state.id };
-    console.log(todo);
+    var todo = this.state.inputVal;
+    var id = this.state.id;
+    if (todo_list.length === 1) {
+      var classColor =
+        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-success";
+    } else {
+      var classColor =
+        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger";
+    }
+    todo_list.unshift([todo, classColor, id]);
+    this.setState({ lists: todo_list });
+    var filteredAry = todo_list.filter(function(e) {
+      return e[0] !== "hi";
+    });
+    todo_list = filteredAry;
+    this.setState({ lists: filteredAry });
+    console.log("this filtered array", filteredAry);
+  }
+
+  viewList() {
+    return (
+      <ViewTodo value={this.state} parentDelete={cid => this.deleteItem(cid)} />
+    );
+  }
+
+  deleteItem(cid) {
+    console.log("parent delete", cid);
+    var filteredAry = todo_list.filter(function(e) {
+      return e[2] !== cid;
+    });
+    todo_list = filteredAry;
+    this.setState({ lists: filteredAry });
+    console.log("deleted filtered array", filteredAry);
   }
 
   render() {
@@ -92,7 +128,7 @@ class InputCard extends Component {
             </div>
 
             <div className="list-group">
-              <ViewTodo inputVal={this.state.inputVal} />
+              <this.viewList />
             </div>
           </div>
         </div>

@@ -1,58 +1,90 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-
+import { InputCard } from "./inputCard";
+var inputList;
 class ViewTodo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { dispList: [] };
+    // this.deletechild = this.deletechild.bind(this);
+  }
+
+  deletechild(id) {
+    console.log("delete child ", id);
+    this.props.parentDelete(id);
+  }
+
+  componentDidMount() {
+    this.setState({ dispList: this.props.value.lists });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.value !== prevProps.value) {
+      this.setState({ dispList: this.props.value.lists });
+      console.log("component Updated");
+    }
+  }
+
   render() {
+    inputList = this.state.dispList;
+    inputList = inputList.filter(function(item) {
+      return item[0];
+    });
+    console.log("this inputList ", inputList);
+
     return (
       <div>
-        <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-success">
-          <p className="p-0 m-0 flex-grow-1">
-            <input
-              type="checkbox"
-              aria-label="Checkbox for following text input"
-            />
-            {this.props.inputVal}
-          </p>
-          <button>
-            <FontAwesomeIcon icon={faEdit} />
-          </button>
-          <button>
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </button>
-        </li>
-        {/* <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger">
-              <p className="p-0 m-0 flex-grow-1">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for following text input"
-                />
-                Second item
-              </p>
-              <button>
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-              <button>
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </button>
-            </li> */}
-        {/* <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-warning">
-              <p className="p-0 m-0 flex-grow-1">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for following text input"
-                />
-                Third item
-              </p>
-              <button>
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-              <button>
-                <FontAwesomeIcon icon={faTrashAlt} />
-              </button>
-            </li> */}
+        {inputList.map(inputList => (
+          <li key={inputList.toString()} className={inputList[1]}>
+            <p className="p-0 m-0 flex-grow-1">
+              <input
+                type="checkbox"
+                aria-label="Checkbox for following text input"
+              />
+              {inputList[0]}
+            </p>
+            <button>
+              <FontAwesomeIcon icon={faEdit} />
+            </button>
+            <button id="trash" onClick={() => this.deletechild(inputList[2])}>
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </button>
+          </li>
+        ))}
       </div>
     );
   }
 }
 export default ViewTodo;
+
+// {/* <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger">
+//               <p className="p-0 m-0 flex-grow-1">
+//                 <input
+//                   type="checkbox"
+//                   aria-label="Checkbox for following text input"
+//                 />
+//                 Second item
+//               </p>
+//               <button>
+//                 <FontAwesomeIcon icon={faEdit} />
+//               </button>
+//               <button>
+//                 <FontAwesomeIcon icon={faTrashAlt} />
+//               </button>
+//             </li> */}
+//         {/* <li className="list-group-item d-flex justify-content-between list-group-item-action list-group-item-warning">
+//               <p className="p-0 m-0 flex-grow-1">
+//                 <input
+//                   type="checkbox"
+//                   aria-label="Checkbox for following text input"
+//                 />
+//                 Third item
+//               </p>
+//               <button>
+//                 <FontAwesomeIcon icon={faEdit} />
+//               </button>
+//               <button>
+//                 <FontAwesomeIcon icon={faTrashAlt} />
+//               </button>
+//             </li> */}
