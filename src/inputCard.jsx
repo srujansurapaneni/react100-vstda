@@ -13,6 +13,7 @@ class InputCard extends Component {
       lists: [[]]
     };
     this.handleEvent = this.handleEvent.bind(this);
+    this.handleDropdown = this.handleDropdown.bind(this);
     this.addEvent = this.addEvent.bind(this);
     this.viewList = this.viewList.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
@@ -23,24 +24,29 @@ class InputCard extends Component {
     this.setState({ inputVal: e.target.value, id: window.id++ });
   }
 
+  handleDropdown(e) {
+    this.setState({ dropDownVal: e.target.text });
+  }
+
   addEvent() {
     var todo = this.state.inputVal;
     var id = this.state.id;
-    if (todo_list.length === 1) {
+    var priority = this.state.dropDownVal;
+    if (priority === "Low") {
       var classColor =
         "list-group-item d-flex justify-content-between list-group-item-action list-group-item-success";
+    } else if (priority === "Medium") {
+      var classColor =
+        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-warning";
     } else {
       var classColor =
         "list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger";
     }
     todo_list.unshift([todo, classColor, id]);
     this.setState({ lists: todo_list });
-    var filteredAry = todo_list.filter(function(e) {
-      return e[0] !== "hi";
-    });
+    var filteredAry = todo_list;
     todo_list = filteredAry;
     this.setState({ lists: filteredAry });
-    console.log("this filtered array", filteredAry);
   }
 
   viewList() {
@@ -50,13 +56,11 @@ class InputCard extends Component {
   }
 
   deleteItem(cid) {
-    console.log("parent delete", cid);
     var filteredAry = todo_list.filter(function(e) {
       return e[2] !== cid;
     });
     todo_list = filteredAry;
     this.setState({ lists: filteredAry });
-    console.log("deleted filtered array", filteredAry);
   }
 
   render() {
@@ -96,13 +100,25 @@ class InputCard extends Component {
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton"
                   >
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={this.handleDropdown}
+                    >
                       Low
                     </a>
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={this.handleDropdown}
+                    >
                       Medium
                     </a>
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={this.handleDropdown}
+                    >
                       High
                     </a>
                   </div>
