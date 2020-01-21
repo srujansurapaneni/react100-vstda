@@ -41,6 +41,7 @@ class ViewTodo extends Component {
               <input
                 type="checkbox"
                 aria-label="Checkbox for following text input"
+                onClick={() => this.deletechild(inputList[2])}
               />
               {inputList[0]}
             </p>
