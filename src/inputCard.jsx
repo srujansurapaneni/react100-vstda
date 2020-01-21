@@ -32,15 +32,15 @@ class InputCard extends Component {
     var todo = this.state.inputVal;
     var id = this.state.id;
     var priority = this.state.dropDownVal;
-    if (priority === "Low") {
+    if (priority === "High") {
       var classColor =
-        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-success";
+        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger";
     } else if (priority === "Medium") {
       var classColor =
         "list-group-item d-flex justify-content-between list-group-item-action list-group-item-warning";
     } else {
       var classColor =
-        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-danger";
+        "list-group-item d-flex justify-content-between list-group-item-action list-group-item-success";
     }
     todo_list.unshift([todo, classColor, id]);
     this.setState({ lists: todo_list });
@@ -87,7 +87,7 @@ class InputCard extends Component {
                 <br />
                 <div className="dropdown">
                   <button
-                    className="btn btn-light dropdown-toggle"
+                    className="btn btn-light dropdown-toggle create-todo-priority"
                     type="button"
                     id="dropdownMenuButton"
                     data-toggle="dropdown"
@@ -101,21 +101,21 @@ class InputCard extends Component {
                     aria-labelledby="dropdownMenuButton"
                   >
                     <a
-                      className="dropdown-item"
+                      className="dropdown-item create-todo-priority"
                       href="#"
                       onClick={this.handleDropdown}
                     >
                       Low
                     </a>
                     <a
-                      className="dropdown-item"
+                      className="dropdown-item create-todo-priority"
                       href="#"
                       onClick={this.handleDropdown}
                     >
                       Medium
                     </a>
                     <a
-                      className="dropdown-item"
+                      className="dropdown-item create-todo-priority"
                       href="#"
                       onClick={this.handleDropdown}
                     >
@@ -128,7 +128,7 @@ class InputCard extends Component {
             <div className="card-footer" style={{ backgroundColor: "#a9a9a9" }}>
               <button
                 type="button"
-                className="btn btn-primary btn-lg btn-block"
+                className="btn btn-primary btn-lg btn-block create-todo"
                 onClick={this.addEvent}
               >
                 Add

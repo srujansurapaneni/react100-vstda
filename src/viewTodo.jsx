@@ -41,9 +41,12 @@ class ViewTodo extends Component {
               {inputList[0]}
             </p>
             <button>
-              <FontAwesomeIcon icon={faEdit} />
+              <FontAwesomeIcon className="edit-todo" icon={faEdit} />
             </button>
-            <button id="trash" onClick={() => this.deletechild(inputList[2])}>
+            <button
+              className="delete-todo"
+              onClick={() => this.deletechild(inputList[2])}
+            >
               <FontAwesomeIcon icon={faTrashAlt} />
             </button>
           </li>
