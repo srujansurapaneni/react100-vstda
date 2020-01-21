@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { InputCard } from "./inputCard";
+
 var inputList;
 class ViewTodo extends Component {
   constructor(props) {
@@ -11,6 +11,10 @@ class ViewTodo extends Component {
 
   deletechild(id) {
     this.props.parentDelete(id);
+  }
+
+  editchild(id) {
+    this.props.parentEdit(id);
   }
 
   componentDidMount() {
@@ -40,8 +44,11 @@ class ViewTodo extends Component {
               />
               {inputList[0]}
             </p>
-            <button>
-              <FontAwesomeIcon className="edit-todo" icon={faEdit} />
+            <button
+              className="edit-todo"
+              onClick={() => this.editchild(inputList[2])}
+            >
+              <FontAwesomeIcon icon={faEdit} />
             </button>
             <button
               className="delete-todo"

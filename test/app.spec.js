@@ -80,7 +80,7 @@ describe("Very Simple To Do App", function main() {
   it("should allow to edit a todo item by clicking .edit-todo of a todo element", () =>
     nightmare
       .goto(url)
-      .select("select.create-todo-priority", "1")
+      .select("button.create-todo-priority", "1")
       .type("textarea.create-todo-text", "ITEM")
       .click("button.create-todo")
       .wait(".edit-todo")
